@@ -19,5 +19,8 @@
     "babel-preset-expo": "^7.1.0",
     "react-devtools": "^4.2.0"
   },
-  "private": true
+  "private": true,
+  "rnpm": {
+    "assets": [ "./assets/fonts/" ]
+  }
 }

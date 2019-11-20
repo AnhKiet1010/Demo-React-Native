@@ -7,10 +7,11 @@ import {
 } from 'react-native';
 import logo from '../assets/hearts.png';
 
-export default function CategroyList({title,image}) {
+export default function CategroyList(props) {
+    const { category } = props;
     return <View style={styles.container}>
-            <Text style={styles.text}>{title}</Text>
-            <Image source={image} style={styles.categoryImage} />
+            <Text style={styles.text}>{category.title}</Text>
+            <Image source={category.image} style={styles.categoryImage} />
         </View>
 }
 
