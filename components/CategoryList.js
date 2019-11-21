@@ -3,16 +3,21 @@ import {
     View,
     Image,
     Text,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity,
+    Alert
 } from 'react-native';
-import logo from '../assets/hearts.png';
 
 export default function CategroyList(props) {
-    const { category } = props;
-    return <View style={styles.container}>
-            <Text style={styles.text}>{category.title}</Text>
-            <Image source={category.image} style={styles.categoryImage} />
-        </View>
+    const { category,onPress } = props;
+    return (
+        <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
+            <View style={styles.container}>
+                <Text style={styles.text}>{category.title}</Text>
+                <Image source={category.image} style={styles.categoryImage} />
+            </View>
+        </TouchableOpacity>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -25,7 +30,9 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 10,
         shadowOffset: {width: 0, height: 0},
-        marginBottom: 16
+        marginTop: 8,
+        marginBottom: 8,
+
     },
     categoryImage: {
         width: 64,
