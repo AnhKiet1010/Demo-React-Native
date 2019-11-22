@@ -1,8 +1,6 @@
 import React from 'react';
 import { View,Text,Image,StyleSheet } from 'react-native';
 
-import formatPrice from '../utils/Number';
-
 export default function ProductsListItem(props) {
     const { product } = props;
     const formatPrice = new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(product.price);

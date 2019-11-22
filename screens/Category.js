@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, FlatList,StyleSheet } from 'react-native';
 import ProductsListItem from '../components/ProductsListItem';
-import productImage from '../assets/package.png';
+import axios from 'axios';
 
 export default class Category extends Component {
 
@@ -10,27 +10,25 @@ export default class Category extends Component {
             title: navigation.getParam('categoryName')
         };
     };
-
     constructor(props) {
         super();
 
         this.state = {
-            products: [
-                { 
-                    id: 1,
-                    name : 'CÂN BẰNG ĐỘ',
-                    image: 'https://blogchamsoc.com/wp-content/uploads/2018/11/cerave-2-loai.jpg',
-                    price: 500000
-                },
-                { 
-                    id: 2,
-                    name : 'NGĂN NGỪA NGUY',
-                    image: 'https://blogchamsoc.com/wp-content/uploads/2018/08/S%E1%BB%AFa-R%E1%BB%ADa-M%E1%BA%B7t-Chi%E1%BA%BFt-Xu%E1%BA%A5t-Tr%C3%A0-Xanh-Innisfree.png',
-                    price: 700000
-                }
-            ]
+            products: []
         };
     }
+
+    componentDidMount() {
+        const { navigation } = this.props;
+        axios.get('http://305f1ee1.ngrok.io/products?category=' + navigation.getParam('categoryId'))
+        .then(
+            res => this.setState({
+                products: res.data
+            })
+        )
+        .catch(err => console.log(err))
+    }
+
     render() {
         return (
             <FlatList

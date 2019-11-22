@@ -1,0 +1,71 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Sữa tắm"
+        },
+        {
+            "id": 2,
+            "name": "Sữa Rửa Mặt"
+        },
+        {
+            "id": 3,
+            "name": "Kem Dưỡng Da"
+        },
+        {
+            "id": 4,
+            "name": "Kem Đánh Răng"
+        }
+    ],
+    "products": [
+        { 
+            "id": 1,
+            "name" : "SỮA RỬA MẶT",
+            "image": "https://blogchamsoc.com/wp-content/uploads/2018/11/cerave-2-loai.jpg",
+            "price": 500000,
+            "category": 2
+        },
+        { 
+            "id": 2,
+            "name" : "SỮA RỬA MẶT",
+            "image": "https://myphamnhat.info/wp-content/uploads/2017/10/sua-rua-mat-aha-wash-cleansing.png",
+            "price": 500000,
+            "category": 2
+        },
+        { 
+            "id": 3,
+            "name" : "KEM DƯỠNG DA",
+            "image": "https://healthmart.vn/wp-content/uploads/2014/11/kem-duong-da-shiseido-aqualabel-special-cream-90g.jpg",
+            "price": 500000,
+            "category": 3
+        },
+        { 
+            "id": 4,
+            "name" : "SỮA RỬA MẶT",
+            "image": "https://myphambo.com/wp-content/uploads/2015/04/Sua-rua-mat-Shiseido-senka-Whip-120g-Nhat-ban-2.jpg",
+            "price": 500000,
+            "category": 2
+        },
+        { 
+            "id": 5,
+            "name" : "KEM ĐÁNH RĂNG",
+            "image": "https://www.ibanle.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/k/e/kem-danh-rang-chong-hoi-mieng-kao-165g-nhat-ban.jpg",
+            "price": 500000,
+            "category": 4
+        },
+        { 
+            "id": 6,
+            "name" : "KEM ĐÁNH RĂNG",
+            "image": "https://cochiskin.com/wp-content/uploads/2018/06/Kem-%C4%91%C3%A1nh-r%C4%83ng-White-and-White-Lion-Nh%E1%BA%ADt-B%E1%BA%A3n.jpg",
+            "price": 500000,
+            "category": 4
+        },
+        { 
+            "id": 7,
+            "name" : "SỮA TẮM",
+            "image": "https://myphamnhat.info/wp-content/uploads/2019/01/sua-tam-duong-am-trang-da-care-cera.jpg",
+            "price": 500000,
+            "category": 1
+        }
+    ]
+}

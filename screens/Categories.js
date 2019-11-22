@@ -5,6 +5,7 @@ import shower from '../assets/shower.png';
 import tooth from '../assets/toothpaste.png';
 import cleanser from '../assets/face-cleanser.png';
 import cream from '../assets/cream.png';
+import axios from 'axios';
 
 export default class Categories extends Component {
     static navigationOptions = {
@@ -15,25 +16,30 @@ export default class Categories extends Component {
     super(props);
 
     this.state = {
-        categories : [
-            {id: 1, title: 'Sữa tắm',image: shower},
-            {id: 2, title: 'Sữa Rửa Mặt',image: cleanser},
-            {id: 3, title: 'Kem Dưỡng Da',image: cream},
-            {id: 4, title: 'Kem Đánh Răng',image: tooth},
-        ]
+        categories : []
     }
 }
+    componentDidMount() {
+        axios.get('http://305f1ee1.ngrok.io/categories')
+        .then(
+            res => this.setState({
+                categories: res.data
+            })
+        )
+        .catch(err => console.log(err))
+    }
+
     render() {
-        const { navigation } = this.props;
         const { categories } = this.state;
         return (
             <View style={styles.container}>
-                <FlatList 
+                <FlatList
                 data={categories}
-                renderItem={({item}) => <CategoryList 
-                    category={item} 
+                renderItem={({item}) => <CategoryList
+                    category={item}
                     onPress={() => this.props.navigation.navigate('Category', {
-                        categoryName: item.title
+                        categoryName: item.title,
+                        categoryId: item.id
                     })}
                 />}
                 keyExtractor={(item) => `${item.id}`}
