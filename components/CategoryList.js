@@ -53,9 +53,10 @@ const styles = StyleSheet.create({
         height: 64
     },
     text: {
-        fontSize: 20,
-        fontWeight: '700',
+        fontSize: 16,
+        fontWeight: '900',
         textTransform: 'uppercase',
-        marginBottom: 8
+        marginBottom: 8,
+        fontFamily: 'Pacifico-Regular'
     }
 })

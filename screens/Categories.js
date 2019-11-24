@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View ,FlatList } from 'react-native';
 import CategoryList from '../components/CategoryList';
-import shower from '../assets/shower.png';
-import tooth from '../assets/toothpaste.png';
-import cleanser from '../assets/face-cleanser.png';
-import cream from '../assets/cream.png';
 import axios from 'axios';
 
 export default class Categories extends Component {
     static navigationOptions = {
-        title: 'Home',
+        title: 'Home'
     };
 
     constructor(props) {
@@ -20,7 +16,7 @@ export default class Categories extends Component {
     }
 }
     componentDidMount() {
-        axios.get('http://305f1ee1.ngrok.io/categories')
+        axios.get('http://cc3380db.ngrok.io/categories')
         .then(
             res => this.setState({
                 categories: res.data
