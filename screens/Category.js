@@ -20,7 +20,7 @@ export default class Category extends Component {
 
     componentDidMount() {
         const { navigation } = this.props;
-        axios.get('http://cc3380db.ngrok.io/products?category=' + navigation.getParam('categoryId'))
+        axios.get('http://7b516426.ngrok.io/products?category=' + navigation.getParam('categoryId'))
         .then(
             res => this.setState({
                 products: res.data
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 8
     },  
     wrap: {
-        flex: 1,
+        width: '50%',
         paddingHorizontal: 8
     }
 })

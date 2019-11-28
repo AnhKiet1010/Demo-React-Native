@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet,FlatList } from 'react-native';
 import OrderList from '../components/OderList';
 import Bill from '../components/Bill';
+import CartContext from '../contexts/CartContext';
 
 export default class Cart extends Component {
 
@@ -11,8 +12,21 @@ export default class Cart extends Component {
 
     render() {
         return <View style={styles.container} >
-            <OrderList />
-            <Bill style={styles.bill} />
+            <CartContext.Consumer>
+                {({cartItems, addToCart, removeFromCart}) =>
+                    <FlatList 
+                        data={cartItems}
+                        renderItem={({item}) =>
+                            <OrderList item={item} addToCart={ addToCart } removeFromCart={removeFromCart} />
+                        }
+                        keyExtractor={(item) => `${item.product.id}`}
+                    />
+                }
+            </CartContext.Consumer>
+
+            <CartContext.Consumer>
+                {({total}) => <Bill total={total} style={styles.bill} />}
+            </CartContext.Consumer>
         </View>
     }
 }

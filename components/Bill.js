@@ -3,11 +3,14 @@ import  { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
 
 export default class Bill extends React.Component {
     render() {
+        const { total } = this.props;
+        const formatPrice = new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(total);
+
         return (
             <View style={styles.container}>
                 <View style={styles.total}>
                     <Text style={styles.text}>Tổng</Text>
-                    <Text style={styles.num}>4,567K</Text>
+                    <Text style={styles.num}>{formatPrice}</Text>
                 </View>
                 <View style={borderRadius=7}>
                     <TouchableOpacity>
@@ -24,7 +27,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: 'red',
         height: 100
     },
     total: {

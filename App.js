@@ -5,6 +5,8 @@ import AppNavigator from './AppNavigator';
 import 'react-native-gesture-handler';
 import * as Font from 'expo-font';
 
+import { CartProvider } from './contexts/CartContext';
+
 const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends Component {
@@ -19,9 +21,11 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-          <AppContainer />
-      </View>
+      <CartProvider>
+        <View style={styles.container}>
+            <AppContainer />
+        </View>
+      </CartProvider>
     );
   }
 }

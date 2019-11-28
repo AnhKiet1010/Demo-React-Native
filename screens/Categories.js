@@ -16,7 +16,7 @@ export default class Categories extends Component {
     }
 }
     componentDidMount() {
-        axios.get('http://cc3380db.ngrok.io/categories')
+        axios.get('http://7b516426.ngrok.io/categories')
         .then(
             res => this.setState({
                 categories: res.data

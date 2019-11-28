@@ -1,25 +1,25 @@
 import React from 'react';
 import  { View, Text, Image, StyleSheet,TouchableOpacity } from 'react-native';
-import cream from '../assets/cream.png';
 import { FontAwesome } from '@expo/vector-icons';
 
 export default class OrderList extends React.Component {
 
 
     render() {
-        const { item, onAddToCartClick, removeFromCart } = this.props; 
+        const { item, addToCart, removeFromCart } = this.props;
+        const formatPrice = new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(item.product.price);
         return <View style={styles.container}>
-            <Image source={cream} style={styles.image} />
+            <Image source={{uri: item.product.image}} style={styles.image} />
             <View style={styles.info}>
-                <Text style={styles.productName}>Sữa Rửa Mặt</Text>
-                <Text style={styles.price}>5000K</Text>
+                <Text style={styles.productName}>{item.product.name}</Text>
+                <Text style={styles.price}>{formatPrice}</Text>
             </View>
             <View style={styles.quantity}>
-                <TouchableOpacity onPress={removeFromCart}>
+                <TouchableOpacity  onPress={() => addToCart(item.product) }>
                     <FontAwesome name='plus-circle' style={styles.button} />
                 </TouchableOpacity>
-                <Text style={styles.number}>2</Text>
-                <TouchableOpacity onPress={onAddToCartClick}>
+                <Text style={styles.number}>{item.quantity}</Text>
+                <TouchableOpacity onPress={() => removeFromCart(item.product)}>
                     <FontAwesome name='minus-circle' style={styles.button}/>
                 </TouchableOpacity>
             </View>
@@ -47,10 +47,11 @@ const styles = StyleSheet.create({
         height: 64
     },
     info: {
-        flex: 3
+        flex: 3,
+        marginLeft: 2
     },
     productName: {
-        fontSize: 24,
+        fontSize: 20,
         padding: 5
     },
     price: {
@@ -63,13 +64,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     number: {
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: 'bold',
         alignItems: 'center',
-        marginTop: 5
+        marginTop: 2
     },
     button: {
-        fontSize: 32,
+        fontSize: 24,
         paddingVertical: 5,
         color: '#3c3c3c'
     }

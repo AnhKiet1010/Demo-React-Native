@@ -1,9 +1,11 @@
 import React from 'react';
-import { View,Text,Image,StyleSheet,TouchableOpacity } from 'react-native';
+import { View,Text,Image,StyleSheet,TouchableOpacity, Alert } from 'react-native';
+import CartContext from '../contexts/CartContext';
 
 export default function ProductsListItem(props) {
-    const { product,onAddToCartClick } = props;
+    const { product } = props;
     const formatPrice = new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(product.price);
+
     return (
         <View style={styles.shadow}>
             <View style={styles.container}>
@@ -12,9 +14,16 @@ export default function ProductsListItem(props) {
                     <Text style={styles.name}>{product.name}</Text>
                     <View style={styles.priceRow}>
                         <Text style={styles.price}>{formatPrice}</Text>
-                        <TouchableOpacity onPress={onAddToCartClick} >
-                            <Text style={styles.cardText}>Mua +</Text>
-                        </TouchableOpacity>
+                        <CartContext.Consumer>
+                            {({addToCart}) => {
+                                return <TouchableOpacity onPress={ () => 
+                                    addToCart(product)
+                                } >
+                                    <Text style={styles.cardText}>Mua +</Text>
+                                </TouchableOpacity>
+                                }
+                            }
+                        </CartContext.Consumer>
                     </View>
                 </View>
             </View>

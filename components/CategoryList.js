@@ -4,8 +4,7 @@ import {
     Image,
     Text,
     StyleSheet,
-    TouchableOpacity,
-    Alert
+    TouchableOpacity
 } from 'react-native';
 import shower from '../assets/shower.png';
 import tooth from '../assets/toothpaste.png';
