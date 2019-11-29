@@ -20,7 +20,7 @@ export default class Category extends Component {
 
     componentDidMount() {
         const { navigation } = this.props;
-        axios.get('http://7b516426.ngrok.io/products?category=' + navigation.getParam('categoryId'))
+        axios.get('http://3b0e3042.ngrok.io/products?category=' + navigation.getParam('categoryId'))
         .then(
             res => this.setState({
                 products: res.data

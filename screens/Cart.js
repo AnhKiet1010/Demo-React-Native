@@ -19,7 +19,7 @@ export default class Cart extends Component {
                         renderItem={({item}) =>
                             <OrderList item={item} addToCart={ addToCart } removeFromCart={removeFromCart} />
                         }
-                        keyExtractor={(item) => `${item.product.id}`}
+                        keyExtractor={(item) => `${Math.random()}`}
                     />
                 }
             </CartContext.Consumer>

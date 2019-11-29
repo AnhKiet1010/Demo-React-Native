@@ -41,7 +41,7 @@ export class CartProvider extends Component {
                     onPress: () => {
                         const { cartItems } = this.state;
                         for(var item of cartItems) {
-                            if(item.product.id === product.id) {
+                            if(item.product.id == product.id) {
                                 const index = cartItems.indexOf(item);
                                 this.setState({
                                     cartItems: [
@@ -49,16 +49,19 @@ export class CartProvider extends Component {
                                         { ...item, quantity:  cartItems[index].quantity + 1},
                                         ...cartItems.slice(index + 1)
                                     ]
-                                })
-                            } else
+                                });
+                            } else {
                                 this.setState({
-                                    cartItems: this.state.cartItems.concat({
+                                    constNum: this.state.constNum + 1,
+                                    cartItems: cartItems.concat({
                                         id: this.state.constNum + 1,
                                         product: product,
                                         quantity: 1
                                     })
                                 });
+                            }
                         }
+                        this.getTotal();
                         Alert.alert(
                             'Đã thêm vào giỏ hàng'
                         );
@@ -85,7 +88,7 @@ export class CartProvider extends Component {
                     onPress: () => {
                         const { cartItems } = this.state;
                         for(var item of cartItems) {
-                            if(item.product.id === product.id) {
+                            if(item.product.id == product.id) {
                                 const index = cartItems.indexOf(item);
                                 const quantity = cartItems[index].quantity;
                                 quantity !== 1 ?
@@ -103,6 +106,7 @@ export class CartProvider extends Component {
                                     })
                             }
                         }
+                        this.getTotal();
                         Alert.alert(
                             'Đã xóa khỏi giỏ hàng'
                         );
@@ -115,13 +119,11 @@ export class CartProvider extends Component {
             ],
             { cancelable: false }
         );
-        this.getTotal();
     }
 
     getTotal() {
-        console.log(this.state.total);
+        var total = 0;
         const { cartItems } = this.state;
-        let total = 0;
         for(var item of cartItems) {
             total += item.product.price * item.quantity
         }
@@ -132,7 +134,19 @@ export class CartProvider extends Component {
     }
 
     componentDidMount() {
-        this.getTotal();
+        var total = 0;
+        const { cartItems } = this.state;
+        for(var item of cartItems) {
+            total += item.product.price * item.quantity
+        }
+        console.log('componentDidMount : ' + total);
+        this.setState({
+            total: total
+        });
+    }
+
+    componentDidUpdate() {
+        console.log(this.state.cartItems);
     }
 
     render() {
